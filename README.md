@@ -1,7 +1,5 @@
 # Quicksort
 
-<span style="color: #f2cf4a; font-family: Babas; font-size: 4em;">INSPIRATION DAY</span>
-
 <pre style="font-size: 2rem">
 ⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂
 
