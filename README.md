@@ -1,7 +1,7 @@
 # Quicksort
 
 
-<code style="font-size: 32px">
+<pre style="font-size: 32px">
 ⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂
 
           ↓
@@ -73,4 +73,4 @@
                 ⚃ ⚃ ⚄ ⚅     <span style="font-size: 0.8rem">Second half starts with 5 (no more work for either half)</span>
 
 ⚀ ⚀ ⚁ ⚁ ⚂ ⚂ ⚂ ⚃ ⚃ ⚃ ⚄ ⚅
-</code>
+</pre>
