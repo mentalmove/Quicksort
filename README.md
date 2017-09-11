@@ -1,5 +1,11 @@
 # Quicksort
 
+<<<<<<< HEAD
+=======
+#           ↓
+# ⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂
+#           ↑
+>>>>>>> origin/master
 
 <pre style="font-size: 2rem">
 ⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂
