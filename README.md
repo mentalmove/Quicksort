@@ -1,6 +1,6 @@
 # Quicksort
 
-<pre style="font-size: 2rem">
+<pre style="font-size: 2em">
 ⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂
 
           ↓
