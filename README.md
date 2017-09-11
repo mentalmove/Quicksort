@@ -1,8 +1,7 @@
 # Quicksort
 
 
-# ⚁ &nbsp; ⚂ &nbsp; ⚀ &nbsp; ⚅ &nbsp; ⚃ &nbsp; ⚃ &nbsp; ⚄ &nbsp; ⚃ &nbsp; ⚂ &nbsp; ⚁ &nbsp; ⚀ &nbsp; ⚂
-# &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;↑
+⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂
 
 <pre style="font-size: 2rem">
 ⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂
