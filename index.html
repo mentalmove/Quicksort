@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+        <title>Quicksort</title>
+        <style type="text/css">
+            html, body {
+                margin: 0px;
+                font-family: Arial, Verdana;
+                font-size: 20px;
+                text-align: center;
+                height: 100%;
+                background-color: #F8F8F8;
+            }
+        </style>
+        
+        <!--<script type="text/javascript" src="algorithm.js"></script>-->
+        <!--<script type="text/javascript" src="raw_algorithm.js"></script>-->
+        
+    </head>
+    <body>
+        
+        <script type="text/javascript">
+            
+            var AUTOMATED = false;
+            var automations = [];
+
+            function manually () {
+                if ( !automations.length ) {
+                    document.body.style.cursor = "default";
+                    return;
+                }
+                var f = automations.shift();
+                f();
+            }
+            if ( !AUTOMATED ) {
+                window.onclick = manually;
+                document.body.style.cursor = "progress";
+            }
+
+            function iD (x) {
+                return document.getElementById(x);
+            }
+
+            function create_level (level) {
+                var layer;
+                for ( var i = 0; i <= level; i++ ) {
+                    if ( iD("layer" + level) )
+                        continue;
+                    layer = document.createElement("div");
+                    layer.style.marginBottom = "11px";
+                    layer.id = "layer" + level;
+                    document.body.appendChild(layer);
+                }
+                return layer;
+            }
+
+            var counter = 0;
+            var highest_level = 0;
+            function debug (msg, level) {
+                if ( level > highest_level )
+                    highest_level = level;
+                var layer = iD("layer" + level) || create_level(level);
+                var content_layer = document.createElement("span");
+                content_layer.innerHTML += msg + "<br>";
+                var f = function () {
+                    if ( level ) {
+                        var previous_layer = iD("layer" + (level - 1));
+                        var previous_content_layer = previous_layer.lastChild;
+                        content_layer.style.cursor = "crosshair";
+                        content_layer.onmouseover = function () {
+                            previous_content_layer.style.backgroundColor = "#CCCCCC";
+                            this.style.backgroundColor = "#CCCCCC";
+                        };
+                        content_layer.onmouseout = function () {
+                            previous_content_layer.style.backgroundColor = "transparent";
+                            this.style.backgroundColor = "transparent";
+                        };
+                    }
+                    content_layer.style.backgroundColor = "#C0C0C0";
+                    setTimeout(function () {
+                        if ( content_layer.style && content_layer.style.backgroundColor && content_layer.style.backgroundColor == "#CCCCCC" )
+                            return;
+                        content_layer.style.backgroundColor = "transparent";
+                    }, 241);
+                    layer.appendChild(content_layer);
+                };
+                if ( AUTOMATED )
+                    setTimeout(f, (271 * counter + (level * 211) + 31));
+                else {
+                    if ( counter )
+                        automations.push(f);
+                    else
+                        f();
+                }
+                counter++;
+            }
+
+            var amount = 32;
+
+            var src = [];
+            var indices = [];
+            var random_index;
+
+            for ( var i = 0; i < amount; i++ )
+                indices.push(i);
+
+            while ( indices.length ) {
+                random_index = Math.floor(Math.random() * indices.length);
+                src.push(indices[random_index]);
+                indices.splice(random_index, 1);
+            }
+
+            var colours = [ "red", "black" ];
+            var symbols = [ "&diams;", "&hearts;", "&spades;", "&clubs;" ];
+            var cards = [ "7", "8", "9", "10", "J", "Q", "K", "A" ];
+
+            var num_cards = symbols.length * cards.length;
+
+            function return_card (index, coloured) {
+                var colour_index = parseInt(index / (num_cards / colours.length));
+                var symbol_index = parseInt(index / (num_cards / symbols.length));
+                var card_index = index % cards.length;
+                if ( coloured )
+                    return "<span style='color: " + colours[colour_index] + "'>" + symbols[symbol_index] + cards[card_index] + "</span>";
+                return symbols[symbol_index] + cards[card_index];
+            }
+            function detailed_debug (collection, start, stop, threshold_index, level) {
+
+                var s = "<span style='color: silver'>";
+                for ( var i = 0; i < collection.length; i++ ) {
+                    if ( i )
+                        s += " &nbsp; ";
+                    if ( i == threshold_index )
+                        s += "<span style='color: blue'>" + return_card(collection[i], false) + "</span>";
+                    else {
+                        if ( i >= start && i <= stop )
+                            s += return_card(collection[i], true);
+                        else
+                            s += return_card(collection[i], false);
+                    }
+                }
+                s += "</span>";
+                debug( s, level );
+            }
+
+            function swap (collection, first_index, second_index) {
+                var tmp = collection[first_index];
+                collection[first_index] = collection[second_index];
+                collection[second_index] = tmp;
+            }
+            function divide (collection, first_index, last_index, level) {
+
+                var left_index = first_index;
+                var right_index = last_index;
+                var threshold_index = parseInt((first_index + last_index) / 2);
+                var threshold = collection[threshold_index];
+
+                detailed_debug(collection, first_index, last_index, threshold_index, level);
+
+                while ( left_index <= right_index ) {
+                    while ( collection[left_index] < threshold )
+                        left_index++;
+                    while ( collection[right_index] > threshold )
+                        right_index--;
+                    if ( left_index <= right_index ) {
+                        swap(collection, left_index, right_index);
+                        left_index++;
+                        right_index--;
+                    }
+                }
+
+                return left_index;
+            }
+            function quicksort (collection, first_index, last_index, level) {
+
+                var split;
+
+                if ( collection.length > 1 ) {
+                    split = divide(collection, first_index, last_index, level);
+                    if ( first_index < (split - 1) )
+                        quicksort(collection, first_index, (split - 1), (level + 1));
+                    if ( split < last_index )
+                        quicksort(collection, split, last_index, (level + 1));
+                }
+
+                return collection;
+            }
+
+            detailed_debug (src, 0, (src.length - 1), -1, highest_level);
+
+            var result = quicksort(src, 0, (src.length - 1), 0);
+
+            detailed_debug (result, 0, (result.length - 1), -1, (highest_level + 1));
+
+            
+        </script>
+        
+    </body>
+</html>
