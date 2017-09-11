@@ -1,9 +1,7 @@
 # Quicksort
 
-<style>pre:nth-child(odd){font-size: 32px}</style>
 
-
-<pre>
+<pre class="markdown-body h1">
 ⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂
 
           ↓
