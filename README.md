@@ -1,6 +1,28 @@
 # Quicksort
 
+Quicksort is said to be the fastest known comparison-based sort algorithm;
+this is true for the average case although quicksort's speed is
+(in contrast to some other sort algorithms) not guaranteed - in some
+rare cases it tends to be slow.
 
+**index.html** visualises how *Quicksort* works in general  
+When variable `AUTOMATED` is set to `false`, execution stops
+after every single step and waits for the user to click.
+
+**algorithm.js** is a possible Javascript implementation,
+putting the emphasis on displaying the necessary steps
+in the console.
+
+**raw_algorithm.js** is a ready-to-use Javascript implementation,
+providing the standalone function  
+`quicksort(collection, left, right, compare_fnc)`.
+Optional parameter `compare_fnc`defines the way the collection shall be sorted.
+Since visualisation was not intended here, the code is fully commented.
+*raw_algorithm.js* ends with three examples:
+Ascending numeric sort, descending numeric sort and ascending word-based alphabetic sort.
+
+
+## Example
 
 A dynamic variation of the following using random values can be found [here](http://pure-code.mentalmove.com/javascript/sort/quicksort/?single_page=true)
 ```
