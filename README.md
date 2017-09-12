@@ -1,6 +1,8 @@
 # Quicksort
 
 
+
+A dynamic variation of the following using random values can be found [here](http://pure-code.mentalmove.com/javascript/sort/quicksort/?single_page=true)
 ```
  .   .        .    .   .    .   .    .   .    .   .    .   .    .        .   .                 .        .         
    .                 .        .      .   .                        .      .   .      .                             
