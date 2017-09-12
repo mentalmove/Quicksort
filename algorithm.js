@@ -53,7 +53,7 @@ function create_random_array (limit) {
     for ( i = 0; i < limit; i++ )
         tmp.push(i);
     for ( i = 0; i < limit; i++ )
-    tmp.push( Math.floor(Math.random() * limit) );
+        tmp.push( Math.floor(Math.random() * limit) );
     var a = [];
     while ( tmp.length ) {
         random_index = Math.floor(Math.random() * tmp.length);
