@@ -5,7 +5,7 @@ this is true for the average case although quicksort's speed is
 (in contrast to some other sort algorithms) not guaranteed - in some
 rare cases it tends to be slow.
 
-**index.html** visualises how *Quicksort* works in general  
+**index.html** visualises how quicksort works in general  
 When variable `AUTOMATED` is set to `false`, execution stops
 after every single step and waits for the user to click.
 
@@ -20,6 +20,37 @@ Optional parameter `compare_fnc`defines the way the collection shall be sorted.
 Since visualisation was not intended here, the code is fully commented.
 *raw_algorithm.js* ends with three examples:
 Ascending numeric sort, descending numeric sort and ascending word-based alphabetic sort.
+
+
+## How it works
+
+Basic idea is to divide the collection into two halves of (hopefully almost) equal size
+where all values in one half are correctly put left of a given threshold and
+all values in the other half are correctly put right of this threshold
+(values equal to the threshold may appear everywhere), then to
+repeat the procedure with each half until all sections contain only one element.  
+To do so, an element (the so-called pivot) is chosen to contain the threshold.
+This is the weak point of quicksort: Ideally, the threshold is the collection's
+median, but the median can't be found efficiently without the collection being sorted;
+fortunately, when sorting larger collections, the probability to be close to
+the median is relatively high.  
+Two pointers are set on the first and the last element; these must walk towards each other
+as long as the sort condition is satisfied - in other words: When they stop, it is known
+that the corresponding values are either wrong and must be exchanged either at least
+can be exchanged without doing harm. This is to be repeated until the pointers meet.
+After that, the section from left pointer to last element and the remaining section
+are treated seperately the same way: this will always result into a completely
+sorted collection.
+
+In theory, every element could serve as pivot; it is recommendable to use the
+middle element
+- to avoid confusion with sort conditions and
+- to simplify the process for already sorted as well as reverse-sorted collections.
+
+In the (astronomically unlikely) worst case the necessary steps are proportional to
+_n<sup>2</sup>_ steps,  
+in the best case proportional to _n * log<sub>2</sub>(n)_ steps where
+_n_ is the amount of elements.
 
 
 ## Example
