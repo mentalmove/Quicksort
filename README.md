@@ -48,8 +48,8 @@ middle element
 - to simplify the process for already sorted as well as reverse-sorted collections.
 
 In the (astronomically unlikely) worst case the necessary steps are proportional to
-_n<sup>2</sup>_ steps,  
-in the best case proportional to _n * log<sub>2</sub>(n)_ steps where
+_n<sup>2</sup>_,  
+in the best case proportional to _n * log<sub>2</sub>(n)_ where
 _n_ is the amount of elements.
 
 
