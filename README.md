@@ -1,76 +1,160 @@
 # Quicksort
 
 
-<pre class="markdown-body h1">
-⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂
+```
+ .   .        .    .   .    .   .    .   .    .   .    .   .    .        .   .                 .        .         
+   .                 .        .      .   .                        .      .   .      .                             
+ .   .    .        .   .    .   .    .   .    .   .    .   .        .    .   .             .        .             
 
-          ↓
-⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂     <span style="font-size: 0.8rem">Elements <= 4 to left; elements >= 4 to right</span>
-          ↑
-          
-⚁ ⚂ ⚀ ⚅ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚂     <span style="font-size: 0.8rem">Swap 6 and 3</span>
-      ↑               ↑
-⚁ ⚂ ⚀ ⚂ ⚃ ⚃ ⚄ ⚃ ⚂ ⚁ ⚀ ⚅     <span style="font-size: 0.8rem">Swap 4 and 1</span>
-        ↑           ↑
-⚁ ⚂ ⚀ ⚂ ⚀ ⚃ ⚄ ⚃ ⚂ ⚁ ⚃ ⚅     <span style="font-size: 0.8rem">Swap 4 and 2</span>
-          ↑       ↑
-⚁ ⚂ ⚀ ⚂ ⚀ ⚁ ⚄ ⚃ ⚂ ⚃ ⚃ ⚅     <span style="font-size: 0.8rem">Swap 5 and 3</span>
-            ↑   ↑
 
-                ↓
-⚁ ⚂ ⚀ ⚂ ⚀ ⚁ ⚂ ⚃ ⚄ ⚃ ⚃ ⚅     <span style="font-size: 0.8rem">Second half starts with 5</span>
-<span style="font-size: 0.8rem">Don't worry about 4 appearing in both halves</span>
+                                             +-----+                                                              
+ .   .        .    .   .    .   .    .   .   |.   .|   .   .    .        .   .                 .        .         
+   .                 .        .      .   .   |     |              .      .   .      .                                   Elements <= 4 to left; elements >= 4 to right
+ .   .    .        .   .    .   .    .   .   |.   .|   .   .        .    .   .             .        .             
+                                             +-----+                                                              
 
-      ↓
-⚁ ⚂ ⚀ ⚂ ⚀ ⚁ ⚂ ⚃             <span style="font-size: 0.8rem">Elements <= 3 to left; elements >= 3 to right</span>
-      ↑
 
-⚁ ⚂ ⚀ ⚂ ⚀ ⚁ ⚂ ⚃             <span style="font-size: 0.8rem">Swap 3 and 2</span>
-      ↑   ↑
++-----+                                                                                            +-----+        
+|.   .|       .    .   .    .   .    .   .    .   .    .   .    .        .   .                 .   |    .|        
+|  .  |              .        .      .   .                        .      .   .      .              |     |              Swap 5 and 2
+|.   .|   .        .   .    .   .    .   .    .   .    .   .        .    .   .             .       |.    |        
++-----+                                                                                            +-----+        
 
-          ↓
-⚁ ⚂ ⚀ ⚁ ⚀ ⚂ ⚂ ⚃             <span style="font-size: 0.8rem">Second half starts with 3</span>
-<span style="font-size: 0.8rem">Don't worry about 3 appearing in both halves</span>
+                  +-----+                                                                 +-----+                 
+     .        .   |.   .|   .   .    .   .    .   .    .   .    .        .   .            |    .|   .   .         
+                  |  .  |     .      .   .                        .      .   .      .     |     |     .                 Swap 5 and 2
+ .        .       |.   .|   .   .    .   .    .   .    .   .        .    .   .            |.    |   .   .         
+                  +-----+                                                                 +-----+                 
 
-    ↓
-⚁ ⚂ ⚀ ⚁ ⚀                   <span style="font-size: 0.8rem">Elements <= 1 to left; elements >= 1 to right</span>
-    ↑
+                           +-----+                                               +-----+                          
+     .        .        .   |.   .|   .   .    .   .    .   .    .        .   .   |     |   .   .    .   .         
+                           |  .  |   .   .                        .      .   .   |  .  |     .        .                 Swap 5 and 1
+ .        .        .       |.   .|   .   .    .   .    .   .        .    .   .   |     |   .   .    .   .         
+                           +-----+                                               +-----+                          
 
-⚁ ⚂ ⚀ ⚁ ⚀                   <span style="font-size: 0.8rem">Swap 2 and 1</span>
-↑       ↑
-⚀ ⚂ ⚀ ⚁ ⚁                   <span style="font-size: 0.8rem">Swap 3 and 1</span>
-  ↑ ↑
+                                    +-----+                    +-----+                                            
+     .        .        .            |.   .|   .   .    .   .   |.    |   .   .    .   .    .   .    .   .         
+                              .     |.   .|                    |  .  |   .   .      .        .        .                 Swap 6 and 3
+ .        .        .                |.   .|   .   .    .   .   |    .|   .   .    .   .    .   .    .   .         
+                                    +-----+                    +-----+                                            
 
-    ↓
-⚀ ⚀ ⚂ ⚁ ⚁                   <span style="font-size: 0.8rem">Second half starts with 3 (no more work for first half)</span>
 
-      ↓
-    ⚂ ⚁ ⚁                   <span style="font-size: 0.8rem">Elements <= 2 to left; elements >= 2 to right</span>
-      ↑
+                                                      +-----+                                                     
+     .        .        .             .        .   .   |.   .|   .   .    .   .    .   .    .   .    .   .               Second half starts with 4
+                              .        .              |     |   .   .    .   .      .        .        .           
+ .        .        .                     .    .   .   |.   .|   .   .    .   .    .   .    .   .    .   .               Don't worry about 4 appearing in both halves
+                                                      +-----+                                                     
 
-    ⚂ ⚁ ⚁                   <span style="font-size: 0.8rem">Swap 3 and 2</span>
-    ↑   ↑
 
-        ↓
-    ⚁ ⚁ ⚂                   <span style="font-size: 0.8rem">Second half starts with 3 (no more work for either half)</span>
+                  +-----+                                                                                         
+     .        .   |    .|            .        .   .                                                               
+                  |     |     .        .                                                                                Elements <= 2 to left; elements >= 2 to right
+ .        .       |.    |                .    .   .                                                               
+                  +-----+                                                                                         
 
-            ↓
-          ⚂ ⚂ ⚃             <span style="font-size: 0.8rem">Elements <= 3 to left; elements >= 3 to right (already done)</span>
-            ↑
 
-            ↓
-          ⚂ ⚂ ⚃             <span style="font-size: 0.8rem">Second half starts with 3 (no more work for either half)</span>
-<span style="font-size: 0.8rem">Don't worry about 3 appearing in both halves</span>
++-----+                    +-----+                                                                                
+|    .|       .        .   |     |   .        .   .                                                               
+|     |                    |  .  |     .                                                                                Swap 2 and 1
+|.    |   .        .       |     |       .    .   .                                                               
++-----+                    +-----+                                                                                
 
-                  ↓
-                ⚄ ⚃ ⚃ ⚅     <span style="font-size: 0.8rem">Elements <= 4 to left; elements >= 4 to right</span>
-                  ↑
 
-                ⚄ ⚃ ⚃ ⚅     <span style="font-size: 0.8rem">Swap 5 and 4</span>
-                ↑   ↑
+                  +-----+                                                                                         
+              .   |    .|       .    .        .   .                                                                     Second half starts with 2
+   .              |     |              .                                                                          
+          .       |.    |   .            .    .   .                                                                     Don't worry about 2 appearing in both halves
+                  +-----+                                                                                         
 
-                    ↓
-                ⚃ ⚃ ⚄ ⚅     <span style="font-size: 0.8rem">Second half starts with 5 (no more work for either half)</span>
 
-⚀ ⚀ ⚁ ⚁ ⚂ ⚂ ⚂ ⚃ ⚃ ⚃ ⚄ ⚅
-</pre>
+                           +-----+                                                                                
+                       .   |    .|   .        .   .                                                               
+                           |     |     .                                                                                Elements <= 2 to left; elements >= 2 to right
+                   .       |.    |       .    .   .                                                               
+                           +-----+                                                                                
+
+
+
+                           +-----+                                                                                
+                       .   |    .|   .        .   .                                                                     Second half starts with 2
+                           |     |     .                                                                                No more work for first half
+                   .       |.    |       .    .   .                                                                     Don't worry about 2 appearing in both halves
+                           +-----+                                                                                
+
+
+                                    +-----+                                                                       
+                                .   |.    |   .   .                                                               
+                                    |  .  |                                                                             Elements <= 3 to left; elements >= 3 to right
+                            .       |    .|   .   .                                                               
+                                    +-----+                                                                       
+
+
+
+                                             +-----+                                                              
+                                .    .       |.   .|                                                                    Second half starts with 4
+                                       .     |     |                                                                    
+                            .            .   |.   .|                                                                    No more work for either half
+                                             +-----+                                                              
+
+
+                                                                        +-----+                                   
+                                                       .   .    .   .   |.   .|   .   .    .   .    .   .         
+                                                                .   .   |.   .|     .        .        .                 Elements <= 6 to left; elements >= 6 to right
+                                                       .   .    .   .   |.   .|   .   .    .   .    .   .         
+                                                                        +-----+                                   
+
+
+                                                               +-----+                             +-----+        
+                                                       .   .   |.   .|   .   .    .   .    .   .   |.   .|        
+                                                               |.   .|   .   .      .        .     |  .  |              Swap 6 and 5
+                                                       .   .   |.   .|   .   .    .   .    .   .   |.   .|        
+                                                               +-----+                             +-----+        
+
+                                                                        +-----+           +-----+                 
+                                                       .   .    .   .   |.   .|   .   .   |.   .|   .   .         
+                                                                  .     |.   .|     .     |  .  |   .   .               Swap 6 and 5
+                                                       .   .    .   .   |.   .|   .   .   |.   .|   .   .         
+                                                                        +-----+           +-----+                 
+
+
+                                                                                          +-----+                 
+                                                       .   .    .   .    .   .    .   .   |.   .|   .   .               Second half starts with 6
+                                                                  .        .        .     |.   .|   .   .               
+                                                       .   .    .   .    .   .    .   .   |.   .|   .   .               No more work for second half
+                                                                                          +-----+                 
+
+
+                                                               +-----+                                            
+                                                       .   .   |.   .|   .   .    .   .                           
+                                                               |  .  |     .        .                                   Elements <= 5 to left; elements >= 5 to right
+                                                       .   .   |.   .|   .   .    .   .                           
+                                                               +-----+                                            
+
+
+
+                                                                                 +-----+                          
+                                                       .   .    .   .    .   .   |.   .|                                Second half starts with 5
+                                                                  .        .     |  .  |                                No more work for second half
+                                                       .   .    .   .    .   .   |.   .|                                Don't worry about 5 appearing in both halves
+                                                                                 +-----+                          
+
+
+                                                               +-----+                                            
+                                                       .   .   |.   .|   .   .                                    
+                                                               |  .  |     .                                            Elements <= 5 to left; elements >= 5 to right
+                                                       .   .   |.   .|   .   .                                    
+                                                               +-----+                                            
+
+
+
+                                                                        +-----+                                   
+                                                       .   .    .   .   |.   .|                                         Second half starts with 5
+                                                                  .     |  .  |                                         No more work for either half
+                                                       .   .    .   .   |.   .|                                         Don't worry about 5 appearing in both halves
+                                                                        +-----+                                   
+
+
+              .        .        .    .        .   .    .   .    .   .    .   .    .   .    .   .    .   .         
+   .                                   .                          .        .        .      .   .    .   .         
+          .        .        .            .    .   .    .   .    .   .    .   .    .   .    .   .    .   .
+```
