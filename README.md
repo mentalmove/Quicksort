@@ -16,7 +16,7 @@ in the console.
 **raw_algorithm.js** is a ready-to-use Javascript implementation,
 providing the standalone function  
 `quicksort(collection, left, right, compare_fnc)`.
-Optional parameter `compare_fnc`defines the way the collection shall be sorted.
+Optional parameter `compare_fnc` defines the way the collection shall be sorted.
 Since visualisation was not intended here, the code is fully commented.
 *raw_algorithm.js* ends with three examples:
 Ascending numeric sort, descending numeric sort and ascending word-based alphabetic sort.
