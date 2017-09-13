@@ -82,7 +82,7 @@ function quicksort (collection, left, right, compare_fnc) {
                 collection[tmp] = tmp2;
             }
             /**
-             * Continue moving to avoid ininite loops
+             * Continue moving to avoid infinite loops
              */
             split++;
             tmp--;
