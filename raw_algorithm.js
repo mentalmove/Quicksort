@@ -153,7 +153,7 @@ function compare_alphabetic (first, second) {
 }
 /**
  * Given compare function: Alphabetic sort
- * Shall demonstrate that collection also works with non-numeric values
+ * Shall demonstrate that it also works with non-numeric collection values
  */
 quicksort(collection, 0, (collection.length - 1), compare_alphabetic);
 console.log( collection.join(" ").replace(/[^\w\s]/g, "") );
